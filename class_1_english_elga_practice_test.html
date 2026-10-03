@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 1 English – ELGA Online Practice Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandYellow: '#FFDE59',
+                        brandOrange: '#FF914D',
+                        brandBlue: '#38B6FF',
+                        brandGreen: '#7ED957',
+                        brandPurple: '#8C52FF',
+                        brandPink: '#FF66C4',
+                        cardBg: '#FFFDF5'
+                    },
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        heading: ['Fredoka', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #F0F7FF;
+            background-image: radial-gradient(#38B6FF 0.75px, transparent 0.75px), radial-gradient(#38B6FF 0.75px, #F0F7FF 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .heading-font { font-family: 'Fredoka', sans-serif; }
+        .canvas-container { touch-action: none; }
+        .question-card {
+            box-shadow: 0 8px 0px rgba(0,0,0,0.06);
+            transition: all 0.2s ease;
+        }
+        .btn-bounce:active { transform: translateY(4px); }
+        .word-chip { transition: all 0.2s; }
+        .word-chip.selected {
+            background-color: #8C52FF;
+            color: white;
+            border-color: #6C2BD9;
+            box-shadow: 0 4px 0 #521DAB;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen pb-16">
+
+    <header class="bg-gradient-to-r from-brandBlue via-brandPurple to-brandPink text-white p-4 sm:p-6 shadow-lg rounded-b-3xl mb-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <span class="bg-white/20 text-white font-bold text-xs uppercase px-3 py-1 rounded-full tracking-wider border border-white/30">ELGA Practice Test</span>
+                <h1 class="heading-font text-3xl sm:text-4xl font-bold mt-1 text-yellow-200 drop-shadow-md">Class 1 English Practice Paper</h1>
+                <p class="text-sm sm:text-base text-blue-100 font-medium">Units 1–4 • Home, Friends, Neighborhood & Sharing Planet</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 text-center min-w-[160px]">
+                <div class="text-xs uppercase tracking-wider text-yellow-200 font-bold">Total Assessment</div>
+                <div class="text-2xl font-black heading-font">80 Marks</div>
+                <div class="text-xs text-blue-100">40 Marks A + 40 Marks B</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4">
+        <nav class="bg-white rounded-2xl p-3 shadow-md mb-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 border-2 border-brandBlue/30">
+            <span class="heading-font font-bold text-brandPurple text-lg mr-2 flex items-center gap-1">
+                <svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                Select Paper Set:
+            </span>
+            <div id="setNavButtons" class="flex flex-wrap gap-2">
+                <!-- Set buttons dynamically generated -->
+            </div>
+        </nav>
+
+        <div class="bg-gradient-to-r from-amber-100 to-yellow-100 border-2 border-brandYellow rounded-2xl p-4 mb-6 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-brandYellow rounded-full flex items-center justify-center font-black text-slate-800 text-xl heading-font shadow-inner" id="currentSetBadge">S1</div>
+                <div>
+                    <h2 class="heading-font font-bold text-xl text-slate-800" id="currentSetTitle">Practice Set 1</h2>
+                    <p class="text-xs text-slate-600 font-semibold">Answer all questions carefully and click Submit Test at the bottom.</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="resetCurrentSet()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-2 rounded-xl text-sm transition btn-bounce flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Reset Set
+                </button>
+            </div>
+        </div>
+
+        <!-- Section Tabs Container -->
+        <div id="paperContent" class="space-y-8">
+            <!-- Questions dynamically injected here -->
+        </div>
+
+        <div class="mt-10 mb-12 text-center bg-white p-6 rounded-3xl border-4 border-brandGreen shadow-xl">
+            <h3 class="heading-font text-2xl font-bold text-slate-800 mb-2">Finished your test?</h3>
+            <p class="text-slate-600 text-sm mb-4">Make sure you have answered all questions before submitting!</p>
+            <button onclick="submitTest()" class="bg-gradient-to-r from-brandGreen to-emerald-500 hover:from-emerald-500 hover:to-brandGreen text-white font-black text-2xl px-10 py-4 rounded-2xl shadow-lg border-b-4 border-emerald-700 hover:shadow-2xl transition transform hover:-translate-y-1 btn-bounce flex items-center gap-3 mx-auto">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                SUBMIT TEST NOW
+            </button>
+        </div>
+    </main>
+
+    <div id="resultModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 border-4 border-brandPurple shadow-2xl relative animate-bounce-short">
+            <button onclick="closeResultModal()" class="absolute top-4 right-4 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl">✕</button>
+            
+            <div class="text-center mb-6">
+                <div id="badgeContainer" class="text-6xl mb-2">🌟</div>
+                <h2 id="resultGradeText" class="heading-font text-3xl font-black text-brandPurple">Excellent Job!</h2>
+                <p class="text-slate-500 text-sm mt-1">Here is your performance breakdown for Class 1 English Test</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 text-center">
+                <div class="bg-blue-50 border-2 border-brandBlue/30 p-3 rounded-2xl">
+                    <div class="text-xs font-bold text-slate-500 uppercase">Total Score</div>
+                    <div class="heading-font text-2xl font-black text-brandBlue" id="resScore">0 / 80</div>
+                </div>
+                <div class="bg-green-50 border-2 border-brandGreen/30 p-3 rounded-2xl">
+                    <div class="text-xs font-bold text-slate-500 uppercase">Percentage</div>
+                    <div class="heading-font text-2xl font-black text-brandGreen" id="resPercentage">0%</div>
+                </div>
+                <div class="bg-purple-50 border-2 border-brandPurple/30 p-3 rounded-2xl">
+                    <div class="text-xs font-bold text-slate-500 uppercase">Correct Answers</div>
+                    <div class="heading-font text-2xl font-black text-brandPurple" id="resCorrect">0</div>
+                </div>
+                <div class="bg-amber-50 border-2 border-brandYellow/30 p-3 rounded-2xl">
+                    <div class="text-xs font-bold text-slate-500 uppercase">Attempted</div>
+                    <div class="heading-font text-2xl font-black text-brandOrange" id="resAttempted">0 / 0</div>
+                </div>
+            </div>
+
+            <!-- Note about Drawing Question -->
+            <div class="bg-yellow-50 border-l-4 border-brandYellow p-4 rounded-xl text-xs text-slate-700 mb-6 flex items-start gap-3">
+                <span class="text-xl">🎨</span>
+                <div>
+                    <span class="font-bold block text-slate-800">Note on Drawing Question (Q4 - 6 Marks):</span>
+                    Freehand drawing questions are saved with your labels. Parents/Teachers can award up to 6 marks for drawing quality.
+                </div>
+            </div>
+
+            <div id="detailedBreakdown" class="space-y-2 mb-6 text-sm max-h-48 overflow-y-auto p-2 bg-slate-50 rounded-xl border border-slate-200">
+                <!-- Breakdown lines -->
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <button onclick="closeResultModal()" class="bg-brandBlue text-white font-bold py-3 px-6 rounded-2xl hover:bg-blue-600 transition btn-bounce">
+                    Review Answers
+                </button>
+                <button onclick="switchSet((currentSetIndex + 1) % setsData.length); closeResultModal();" class="bg-brandPurple text-white font-bold py-3 px-6 rounded-2xl hover:bg-purple-700 transition btn-bounce">
+                    Try Next Practice Set ➔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generator functions for inline SVGs to avoid broken external links
+        const SVGAssets = {
+            cat: `<svg class="w-16 h-16 mx-auto text-amber-600" viewBox="0 0 64 64" fill="currentColor"><circle cx="32" cy="36" r="18" fill="#F59E0B"/><polygon points="18,22 26,14 28,26" fill="#D97706"/><polygon points="46,22 38,14 36,26" fill="#D97706"/><circle cx="26" cy="34" r="3" fill="#111827"/><circle cx="38" cy="34" r="3" fill="#111827"/><polygon points="32,38 30,42 34,42" fill="#EF4444"/><path d="M28 44 Q32 48 36 44" stroke="#111827" stroke-width="2" fill="none"/></svg>`,
+            dog: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><circle cx="32" cy="34" r="18" fill="#D97706"/><ellipse cx="18" cy="30" rx="6" ry="12" fill="#92400E"/><ellipse cx="46" cy="30" rx="6" ry="12" fill="#92400E"/><circle cx="26" cy="32" r="3" fill="#111827"/><circle cx="38" cy="32" r="3" fill="#111827"/><ellipse cx="32" cy="38" rx="4" ry="3" fill="#111827"/><path d="M28 42 Q32 46 36 42" stroke="#111827" stroke-width="2" fill="none"/></svg>`,
+            tree: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><rect x="28" y="36" width="8" height="22" rx="2" fill="#78350F"/><circle cx="32" cy="26" r="18" fill="#10B981"/><circle cx="24" cy="22" r="12" fill="#059669"/><circle cx="40" cy="22" r="12" fill="#059669"/><circle cx="32" cy="18" r="12" fill="#34D399"/></svg>`,
+            apple: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><path d="M32 18 C24 10 12 18 16 34 C20 50 32 54 32 54 C32 54 44 50 48 34 C52 18 40 10 32 18 Z" fill="#EF4444"/><path d="M32 18 C30 12 34 8 36 6" stroke="#78350F" stroke-width="3" fill="none"/><ellipse cx="38" cy="12" rx="4" ry="2" fill="#10B981" transform="rotate(-30 38 12)"/></svg>`,
+            book: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><path d="M12 16 L32 22 L52 16 L52 48 L32 54 L12 48 Z" fill="#38B6FF"/><path d="M32 22 L32 54" stroke="#1E40AF" stroke-width="2"/><path d="M16 22 L30 26 M16 28 L30 32 M16 34 L30 38" stroke="#FFFFFF" stroke-width="2"/></svg>`,
+            sun: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><circle cx="32" cy="32" r="14" fill="#FBBF24"/><path d="M32 8 L32 2 M32 62 L32 56 M8 32 L2 32 M62 32 L56 32 M15 15 L10 10 M54 54 L49 49 M15 49 L10 54 M54 10 L49 15" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/></svg>`,
+            house: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><polygon points="32,10 8,30 56,30" fill="#EF4444"/><rect x="14" y="30" width="36" height="26" fill="#FDE047"/><rect x="26" y="40" width="12" height="16" fill="#78350F"/><rect x="18" y="34" width="8" height="8" fill="#38B6FF"/><rect x="38" y="34" width="8" height="8" fill="#38B6FF"/></svg>`,
+            flower: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><circle cx="32" cy="20" r="8" fill="#EC4899"/><circle cx="20" cy="32" r="8" fill="#EC4899"/><circle cx="44" cy="32" r="8" fill="#EC4899"/><circle cx="32" cy="44" r="8" fill="#EC4899"/><circle cx="32" cy="32" r="8" fill="#FBBF24"/><path d="M32 44 L32 60" stroke="#10B981" stroke-width="4"/></svg>`,
+            car: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><path d="M12 36 L20 22 L44 22 L52 36 L56 36 L56 46 L8 46 L8 36 Z" fill="#3B82F6"/><circle cx="18" cy="46" r="6" fill="#1F2937"/><circle cx="46" cy="46" r="6" fill="#1F2937"/><rect x="22" y="26" width="8" height="8" fill="#E0F2FE"/><rect x="34" y="26" width="8" height="8" fill="#E0F2FE"/></svg>`,
+            pen: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><polygon points="12,52 16,36 44,8 56,20 28,48" fill="#8C52FF"/><polygon points="12,52 16,36 28,48" fill="#6D28D9"/><polygon points="12,52 8,56 16,52" fill="#1F2937"/></svg>`,
+            cup: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><path d="M16 16 L20 48 C20 52 24 54 32 54 C40 54 44 52 44 48 L48 16 Z" fill="#F43F5E"/><path d="M48 22 C54 22 56 28 56 32 C56 38 48 40 48 40" stroke="#F43F5E" stroke-width="4" fill="none"/></svg>`,
+            wood: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64"><rect x="10" y="20" width="44" height="12" rx="4" fill="#B45309"/><rect x="10" y="36" width="44" height="12" rx="4" fill="#854D0E"/><circle cx="14" cy="26" r="3" fill="#78350F"/><circle cx="14" cy="42" r="3" fill="#78350F"/></svg>`
+        };
+
+        const setsData = [
+            /* SET 1 */
+            {
+                setName: "Practice Set 1",
+                partA: {
+                    q1: [ { word: "home", marks: 1 }, { word: "tree", marks: 1 }, { word: "friend", marks: 1 }, { word: "book", marks: 1 } ],
+                    q2: [
+                        { label: "Beginning Sound for 'Cat' (/c/):", options: [{ id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "sun", label: "Sun", svg: SVGAssets.sun }, { id: "pen", label: "Pen", svg: SVGAssets.pen }], correct: "cat", marks: 3 },
+                        { label: "Middle Sound for 'Pin' (/i/):", options: [{ id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "cup", label: "Cup", svg: SVGAssets.cup }, { id: "car", label: "Car", svg: SVGAssets.car }], correct: "pen", marks: 3 },
+                        { label: "End Sound for 'Dog' (/g/):", options: [{ id: "dog", label: "Dog", svg: SVGAssets.dog }, { id: "tree", label: "Tree", svg: SVGAssets.tree }, { id: "apple", label: "Apple", svg: SVGAssets.apple }], correct: "dog", marks: 3 },
+                        { label: "Odd Sound out among (Cat, Cap, Sun):", options: [{ id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "sun", label: "Sun (Odd!)", svg: SVGAssets.sun }, { id: "cup", label: "Cup", svg: SVGAssets.cup }], correct: "sun", marks: 3 }
+                    ],
+                    q3: {
+                        prompt: "Which word belongs to the 'at' word family?",
+                        options: ["Cat", "Dog", "Pen", "Cup"],
+                        correct: "Cat",
+                        marks: 4
+                    },
+                    q4: { prompt: "Draw and label something we get from trees (e.g. Fruit, Wood, Shade, Paper):", labelPlaceholder: "Type label (e.g. Fruit)", marks: 6 },
+                    q5: [ { word: "garden", marks: 1 }, { word: "school", marks: 1 } ],
+                    q6: [
+                        { word: "C _ T", correct: "A", full: "CAT" },
+                        { word: "D _ G", correct: "O", full: "DOG" },
+                        { word: "B _ O K", correct: "O", full: "BOOK" },
+                        { word: "T R _ E", correct: "E", full: "TREE" },
+                        { word: "S U _", correct: "N", full: "SUN" }
+                    ],
+                    q7: { letter: "F", options: [{ id: "flower", label: "Flower", svg: SVGAssets.flower }, { id: "car", label: "Car", svg: SVGAssets.car }, { id: "dog", label: "Dog", svg: SVGAssets.dog }], correct: "flower", marks: 3 },
+                    q8: { text: "The cat is in the green garden under the big tree.", options: ["cat", "garden", "tree", "the"], wholeWords: ["cat", "garden", "tree", "the"], marks: 4 }
+                },
+                partB: {
+                    q1: {
+                        title: "Story: Rani's Little Garden",
+                        text: "Rani loves plants. She lives in a small home with her mother. Every morning, Rani waters the small green tree near her window. Her best friend Rohan helps her clean the soil. They share apples from the tree.",
+                        questions: [
+                            { q: "Who loves plants?", options: ["Rani", "Rohan", "Teacher"], correct: "Rani", marks: 2 },
+                            { q: "Where does Rani live?", options: ["In a forest", "In a small home", "In a school"], correct: "In a small home", marks: 2 },
+                            { q: "What does Rani water every morning?", options: ["A car", "A tree", "A book"], correct: "A tree", marks: 2 },
+                            { q: "Who is Rani's best friend?", options: ["Mohan", "Rohan", "Priya"], correct: "Rohan", marks: 2 },
+                            { q: "What fruit do they share?", options: ["Apples", "Oranges", "Mangos"], correct: "Apples", marks: 2 }
+                        ]
+                    },
+                    q2: { prompt: "Select the picture of a Naming Word (Person/Place/Thing):", options: [{ id: "house", label: "House", svg: SVGAssets.house }, { id: "run", label: "Action: Run", svg: SVGAssets.sun }], correct: "house", marks: 4 },
+                    q3: { svg: SVGAssets.tree, prompt: "What is the correct naming word for this picture?", options: ["Tree", "Book", "Dog", "Pen"], correct: "Tree", marks: 4 },
+                    q4: [ { singular: "Book", correct: "Books" }, { singular: "Tree", correct: "Trees" }, { singular: "Friend", correct: "Friends" } ],
+                    q5: [
+                        { word: "Mumbai", correct: "Proper Noun" },
+                        { word: "dog", correct: "Common Noun" },
+                        { word: "Rani", correct: "Proper Noun" },
+                        { word: "flower", correct: "Common Noun" }
+                    ],
+                    q6: [
+                        { text: "B", type: "Letter" },
+                        { text: "Cat", type: "Word" },
+                        { text: "Riya goes to Mumbai.", type: "Sentence" },
+                        { text: "Tree", type: "Word" },
+                        { text: "M", type: "Letter" }
+                    ],
+                    q7: [
+                        { word: "Apple", svg: SVGAssets.apple },
+                        { word: "Book", svg: SVGAssets.book },
+                        { word: "Sun", svg: SVGAssets.sun },
+                        { word: "House", svg: SVGAssets.house },
+                        { word: "Flower", svg: SVGAssets.flower }
+                    ],
+                    q8: { sentence: "Riya goes to Mumbai.", options: ["Riya", "goes", "to", "Mumbai"], correct: ["Riya", "Mumbai"], marks: 3 },
+                    q9: { sentence: "Seema likes to read a storybook.", options: ["Seema", "likes", "read", "storybook"], correct: ["read"], marks: 2 }
+                }
+            },
+            /* SET 2 */
+            {
+                setName: "Practice Set 2",
+                partA: {
+                    q1: [ { word: "friend", marks: 1 }, { word: "flower", marks: 1 }, { word: "apple", marks: 1 }, { word: "school", marks: 1 } ],
+                    q2: [
+                        { label: "Beginning Sound for 'Sun' (/s/):", options: [{ id: "sun", label: "Sun", svg: SVGAssets.sun }, { id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "car", label: "Car", svg: SVGAssets.car }], correct: "sun", marks: 3 },
+                        { label: "Middle Sound for 'Cat' (/a/):", options: [{ id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "dog", label: "Dog", svg: SVGAssets.dog }, { id: "pen", label: "Pen", svg: SVGAssets.pen }], correct: "cat", marks: 3 },
+                        { label: "End Sound for 'Cup' (/p/):", options: [{ id: "cup", label: "Cup", svg: SVGAssets.cup }, { id: "sun", label: "Sun", svg: SVGAssets.sun }, { id: "tree", label: "Tree", svg: SVGAssets.tree }], correct: "cup", marks: 3 },
+                        { label: "Odd Sound out among (Dog, Door, Sun):", options: [{ id: "dog", label: "Dog", svg: SVGAssets.dog }, { id: "sun", label: "Sun (Odd!)", svg: SVGAssets.sun }, { id: "wood", label: "Wood", svg: SVGAssets.wood }], correct: "sun", marks: 3 }
+                    ],
+                    q3: { prompt: "Which word belongs to the 'in' word family?", options: ["Pin", "Hat", "Dog", "Cap"], correct: "Pin", marks: 4 },
+                    q4: { prompt: "Draw and label how I help my best friend (e.g., Sharing books, Playing):", labelPlaceholder: "Type label (e.g. Sharing)", marks: 6 },
+                    q5: [ { word: "happy", marks: 1 }, { word: "water", marks: 1 } ],
+                    q6: [
+                        { word: "M _ N", correct: "A", full: "MAN" },
+                        { word: "P _ N", correct: "E", full: "PEN" },
+                        { word: "S U _", correct: "N", full: "SUN" },
+                        { word: "C _ P", correct: "U", full: "CUP" },
+                        { word: "B _ G", correct: "A", full: "BAG" }
+                    ],
+                    q7: { letter: "C", options: [{ id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "flower", label: "Flower", svg: SVGAssets.flower }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "cat", marks: 3 },
+                    q8: { text: "Mother cooks food for Rohan and Priya at home.", options: ["Mother", "food", "Rohan", "home"], wholeWords: ["Mother", "food", "Rohan", "home"], marks: 4 }
+                },
+                partB: {
+                    q1: {
+                        title: "Story: Sharing at School",
+                        text: "Priya goes to school in Mumbai. She sits with her friend Seema. Today, Seema forgot her notebook. Priya shares her notebook and pencil with Seema. Mother gave Priya a delicious orange, which they eat together.",
+                        questions: [
+                            { q: "Where does Priya go to school?", options: ["Delhi", "Mumbai", "London"], correct: "Mumbai", marks: 2 },
+                            { q: "Who is Priya's friend?", options: ["Seema", "Rani", "Riya"], correct: "Seema", marks: 2 },
+                            { q: "What did Seema forget?", options: ["Her bag", "Her notebook", "Her water bottle"], correct: "Her notebook", marks: 2 },
+                            { q: "Who gave Priya an orange?", options: ["Teacher", "Mother", "Uncle"], correct: "Mother", marks: 2 },
+                            { q: "What good habit is shown in the story?", options: ["Fighting", "Sharing", "Sleeping"], correct: "Sharing", marks: 2 }
+                        ]
+                    },
+                    q2: { prompt: "Select the Naming Word picture:", options: [{ id: "book", label: "Book", svg: SVGAssets.book }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "book", marks: 4 },
+                    q3: { svg: SVGAssets.dog, prompt: "Select correct naming word for this animal:", options: ["Dog", "Cat", "Tree", "Flower"], correct: "Dog", marks: 4 },
+                    q4: [ { singular: "Dog", correct: "Dogs" }, { singular: "Orange", correct: "Oranges" }, { singular: "Flower", correct: "Flowers" } ],
+                    q5: [
+                        { word: "London", correct: "Proper Noun" },
+                        { word: "school", correct: "Common Noun" },
+                        { word: "Rohan", correct: "Proper Noun" },
+                        { word: "table", correct: "Common Noun" }
+                    ],
+                    q6: [
+                        { text: "Mother cooks delicious food.", type: "Sentence" },
+                        { text: "K", type: "Letter" },
+                        { text: "Friend", type: "Word" },
+                        { text: "S", type: "Letter" },
+                        { text: "House", type: "Word" }
+                    ],
+                    q7: [
+                        { word: "Tree", svg: SVGAssets.tree },
+                        { word: "Dog", svg: SVGAssets.dog },
+                        { word: "Car", svg: SVGAssets.car },
+                        { word: "Cup", svg: SVGAssets.cup },
+                        { word: "Wood", svg: SVGAssets.wood }
+                    ],
+                    q8: { sentence: "My dog has brown colour.", options: ["My", "dog", "has", "brown", "colour"], correct: ["dog", "colour"], marks: 3 },
+                    q9: { sentence: "Mother cooks delicious food.", options: ["Mother", "cooks", "delicious", "food"], correct: ["cooks"], marks: 2 }
+                }
+            },
+            /* SET 3 */
+            {
+                setName: "Practice Set 3",
+                partA: {
+                    q1: [ { word: "water", marks: 1 }, { word: "wood", marks: 1 }, { word: "clean", marks: 1 }, { word: "family", marks: 1 } ],
+                    q2: [
+                        { label: "Beginning Sound for 'Pen' (/p/):", options: [{ id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "tree", label: "Tree", svg: SVGAssets.tree }], correct: "pen", marks: 3 },
+                        { label: "Middle Sound for 'Dog' (/o/):", options: [{ id: "dog", label: "Dog", svg: SVGAssets.dog }, { id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "flower", label: "Flower", svg: SVGAssets.flower }], correct: "dog", marks: 3 },
+                        { label: "End Sound for 'Cat' (/t/):", options: [{ id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "car", label: "Car", svg: SVGAssets.car }, { id: "house", label: "House", svg: SVGAssets.house }], correct: "cat", marks: 3 },
+                        { label: "Odd Sound out among (Pen, Pig, Dog):", options: [{ id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "dog", label: "Dog (Odd!)", svg: SVGAssets.dog }, { id: "cup", label: "Cup", svg: SVGAssets.cup }], correct: "dog", marks: 3 }
+                    ],
+                    q3: { prompt: "Which word belongs to the 'og' word family?", options: ["Dog", "Sun", "Pen", "Bat"], correct: "Dog", marks: 4 },
+                    q4: { prompt: "Draw and label a picture of Wood or Cotton from trees:", labelPlaceholder: "Type label (e.g. Wood)", marks: 6 },
+                    q5: [ { word: "plant", marks: 1 }, { word: "share", marks: 1 } ],
+                    q6: [
+                        { word: "H _ T", correct: "A", full: "HAT" },
+                        { word: "N _ T", correct: "E", full: "NET" },
+                        { word: "P _ T", correct: "O", full: "POT" },
+                        { word: "F _ X", correct: "O", full: "FOX" },
+                        { word: "J _ G", correct: "U", full: "JUG" }
+                    ],
+                    q7: { letter: "L", options: [{ id: "flower", label: "Flower", svg: SVGAssets.flower }, { id: "apple", label: "Apple", svg: SVGAssets.apple }, { id: "book", label: "Book", svg: SVGAssets.book }], correct: "flower", marks: 3 },
+                    q8: { text: "Rani has two books and a yellow pen.", options: ["Rani", "books", "pen", "yellow"], wholeWords: ["Rani", "books", "pen", "yellow"], marks: 4 }
+                },
+                partB: {
+                    q1: {
+                        title: "Story: The Big Shade Tree",
+                        text: "In Mohan's neighborhood, there is a giant green tree. Children play under its shade when the sun is bright. Mohan and his dog love to sit near the trunk. Trees give clean air and green leaves to our planet.",
+                        questions: [
+                            { q: "Where is the tree located?", options: ["In Mohan's neighborhood", "In a shop", "In London"], correct: "In Mohan's neighborhood", marks: 2 },
+                            { q: "Why do children play under the tree?", options: ["For shade", "For rain", "To sleep"], correct: "For shade", marks: 2 },
+                            { q: "Who sits near the trunk with Mohan?", options: ["His cat", "His dog", "His uncle"], correct: "His dog", marks: 2 },
+                            { q: "What do trees give to our planet?", options: ["Clean air", "Plastic", "Cars"], correct: "Clean air", marks: 2 },
+                            { q: "What color are the leaves?", options: ["Blue", "Green", "Red"], correct: "Green", marks: 2 }
+                        ]
+                    },
+                    q2: { prompt: "Select the Naming Word picture:", options: [{ id: "flower", label: "Flower", svg: SVGAssets.flower }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "flower", marks: 4 },
+                    q3: { svg: SVGAssets.house, prompt: "Identify this place naming word:", options: ["House", "School", "Park", "Tree"], correct: "House", marks: 4 },
+                    q4: [ { singular: "Boy", correct: "Boys" }, { singular: "Girl", correct: "Girls" }, { singular: "Home", correct: "Homes" } ],
+                    q5: [
+                        { word: "Mohan", correct: "Proper Noun" },
+                        { word: "papaya", correct: "Common Noun" },
+                        { word: "Latur", correct: "Proper Noun" },
+                        { word: "coconut", correct: "Common Noun" }
+                    ],
+                    q6: [
+                        { text: "Rani has two books.", type: "Sentence" },
+                        { text: "P", type: "Letter" },
+                        { text: "Orange", type: "Word" },
+                        { text: "Dog", type: "Word" },
+                        { text: "A", type: "Letter" }
+                    ],
+                    q7: [
+                        { word: "Cat", svg: SVGAssets.cat },
+                        { word: "Sun", svg: SVGAssets.sun },
+                        { word: "House", svg: SVGAssets.house },
+                        { word: "Book", svg: SVGAssets.book },
+                        { word: "Pen", svg: SVGAssets.pen }
+                    ],
+                    q8: { sentence: "My uncle lives in London.", options: ["My", "uncle", "lives", "in", "London"], correct: ["uncle", "London"], marks: 3 },
+                    q9: { sentence: "Rohan writes in a notebook.", options: ["Rohan", "writes", "notebook"], correct: ["writes"], marks: 2 }
+                }
+            },
+            /* SET 4 */
+            {
+                setName: "Practice Set 4",
+                partA: {
+                    q1: [ { word: "house", marks: 1 }, { word: "shade", marks: 1 }, { word: "paper", marks: 1 }, { word: "street", marks: 1 } ],
+                    q2: [
+                        { label: "Beginning Sound for 'Book' (/b/):", options: [{ id: "book", label: "Book", svg: SVGAssets.book }, { id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "book", marks: 3 },
+                        { label: "Middle Sound for 'Sun' (/u/):", options: [{ id: "sun", label: "Sun", svg: SVGAssets.sun }, { id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "apple", label: "Apple", svg: SVGAssets.apple }], correct: "sun", marks: 3 },
+                        { label: "End Sound for 'Pen' (/n/):", options: [{ id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "dog", label: "Dog", svg: SVGAssets.dog }, { id: "cup", label: "Cup", svg: SVGAssets.cup }], correct: "pen", marks: 3 },
+                        { label: "Odd Sound out among (Bat, Ball, Cat):", options: [{ id: "book", label: "Book", svg: SVGAssets.book }, { id: "cat", label: "Cat (Odd!)", svg: SVGAssets.cat }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "cat", marks: 3 }
+                    ],
+                    q3: { prompt: "Which word belongs to the 'ap' word family?", options: ["Cap", "Pen", "Dog", "Sun"], correct: "Cap", marks: 4 },
+                    q4: { prompt: "Draw and label Paper or Fruit we get from plants:", labelPlaceholder: "Type label (e.g. Paper)", marks: 6 },
+                    q5: [ { word: "mother", marks: 1 }, { word: "street", marks: 1 } ],
+                    q6: [
+                        { word: "B _ X", correct: "O", full: "BOX" },
+                        { word: "Z _ P", correct: "I", full: "ZIP" },
+                        { word: "M _ T", correct: "A", full: "MAT" },
+                        { word: "L _ G", correct: "E", full: "LEG" },
+                        { word: "C _ B", correct: "O", full: "COB" }
+                    ],
+                    q7: { letter: "P", options: [{ id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "car", label: "Car", svg: SVGAssets.car }, { id: "flower", label: "Flower", svg: SVGAssets.flower }], correct: "pen", marks: 3 },
+                    q8: { text: "Seema and Rohan ride a blue car to school.", options: ["Seema", "Rohan", "car", "school"], wholeWords: ["Seema", "Rohan", "car", "school"], marks: 4 }
+                },
+                partB: {
+                    q1: {
+                        title: "Story: Helping Our Helpers",
+                        text: "Uncle Ram is a milkman in our neighborhood. Every morning, Rohan gives Uncle Ram a glass of fresh water. Mother smiles and says helping community helpers is a good habit.",
+                        questions: [
+                            { q: "What job does Uncle Ram do?", options: ["Milkman", "Teacher", "Doctor"], correct: "Milkman", marks: 2 },
+                            { q: "What does Rohan give Uncle Ram?", options: ["Glass of water", "A book", "A ball"], correct: "Glass of water", marks: 2 },
+                            { q: "When does Uncle Ram come?", options: ["Every morning", "At night", "In evening"], correct: "Every morning", marks: 2 },
+                            { q: "Who smiles at Rohan's good habit?", options: ["Mother", "Seema", "Dog"], correct: "Mother", marks: 2 },
+                            { q: "Helping community helpers is a _____ habit.", options: ["Bad", "Good", "Sad"], correct: "Good", marks: 2 }
+                        ]
+                    },
+                    q2: { prompt: "Select the Naming Word picture:", options: [{ id: "car", label: "Car", svg: SVGAssets.car }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "car", marks: 4 },
+                    q3: { svg: SVGAssets.apple, prompt: "Identify this thing naming word:", options: ["Apple", "Orange", "Tree", "Flower"], correct: "Apple", marks: 4 },
+                    q4: [ { singular: "Pen", correct: "Pens" }, { singular: "Car", correct: "Cars" }, { singular: "Apple", correct: "Apples" } ],
+                    q5: [
+                        { word: "Priya", correct: "Proper Noun" },
+                        { word: "tree", correct: "Common Noun" },
+                        { word: "Seema", correct: "Proper Noun" },
+                        { word: "book", correct: "Common Noun" }
+                    ],
+                    q6: [
+                        { text: "Priya sings a beautiful song.", type: "Sentence" },
+                        { text: "Pen", type: "Word" },
+                        { text: "R", type: "Letter" },
+                        { text: "Z", type: "Letter" },
+                        { text: "Flower", type: "Word" }
+                    ],
+                    q7: [
+                        { word: "Apple", svg: SVGAssets.apple },
+                        { word: "Flower", svg: SVGAssets.flower },
+                        { word: "Tree", svg: SVGAssets.tree },
+                        { word: "Cup", svg: SVGAssets.cup },
+                        { word: "House", svg: SVGAssets.house }
+                    ],
+                    q8: { sentence: "Rani has two books.", options: ["Rani", "has", "two", "books"], correct: ["Rani", "books"], marks: 3 },
+                    q9: { sentence: "I like to jump.", options: ["I", "like", "jump"], correct: ["jump"], marks: 2 }
+                }
+            },
+            /* SET 5 */
+            {
+                setName: "Practice Set 5",
+                partA: {
+                    q1: [ { word: "cotton", marks: 1 }, { word: "orange", marks: 1 }, { word: "park", marks: 1 }, { word: "sister", marks: 1 } ],
+                    q2: [
+                        { label: "Beginning Sound for 'Car' (/c/):", options: [{ id: "car", label: "Car", svg: SVGAssets.car }, { id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "car", marks: 3 },
+                        { label: "Middle Sound for 'Bed' (/e/):", options: [{ id: "pen", label: "Pen", svg: SVGAssets.pen }, { id: "dog", label: "Dog", svg: SVGAssets.dog }, { id: "cup", label: "Cup", svg: SVGAssets.cup }], correct: "pen", marks: 3 },
+                        { label: "End Sound for 'Sun' (/n/):", options: [{ id: "sun", label: "Sun", svg: SVGAssets.sun }, { id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "car", label: "Car", svg: SVGAssets.car }], correct: "sun", marks: 3 },
+                        { label: "Odd Sound out among (Sun, Sock, Pen):", options: [{ id: "sun", label: "Sun", svg: SVGAssets.sun }, { id: "pen", label: "Pen (Odd!)", svg: SVGAssets.pen }, { id: "car", label: "Car", svg: SVGAssets.car }], correct: "pen", marks: 3 }
+                    ],
+                    q3: { prompt: "Which word belongs to the 'an' word family?", options: ["Man", "Pin", "Dog", "Cup"], correct: "Man", marks: 4 },
+                    q4: { prompt: "Draw and label Cotton or Shade we get from plants:", labelPlaceholder: "Type label (e.g. Cotton)", marks: 6 },
+                    q5: [ { word: "pencil", marks: 1 }, { word: "doctor", marks: 1 } ],
+                    q6: [
+                        { word: "C _ P", correct: "A", full: "CAP" },
+                        { word: "F _ N", correct: "I", full: "FIN" },
+                        { word: "T _ P", correct: "O", full: "TOP" },
+                        { word: "B _ D", correct: "E", full: "BED" },
+                        { word: "P _ T", correct: "E", full: "PET" }
+                    ],
+                    q7: { letter: "H", options: [{ id: "house", label: "House", svg: SVGAssets.house }, { id: "cat", label: "Cat", svg: SVGAssets.cat }, { id: "apple", label: "Apple", svg: SVGAssets.apple }], correct: "house", marks: 3 },
+                    q8: { text: "Priya eats an orange near her home.", options: ["Priya", "orange", "home", "eats"], wholeWords: ["Priya", "orange", "home", "eats"], marks: 4 }
+                },
+                partB: {
+                    q1: {
+                        title: "Story: Caring for Our Planet",
+                        text: "Riya and Rohan go to the neighborhood park every Sunday. They water the pink flowers and pick up paper wrappers. Riya says, 'Plants are our friends. We must care for our planet Earth!'",
+                        questions: [
+                            { q: "Where do Riya and Rohan go every Sunday?", options: ["Neighborhood park", "School", "Market"], correct: "Neighborhood park", marks: 2 },
+                            { q: "What color are the flowers in the park?", options: ["Pink", "Yellow", "Blue"], correct: "Pink", marks: 2 },
+                            { q: "What do they pick up from the park?", options: ["Paper wrappers", "Toys", "Coins"], correct: "Paper wrappers", marks: 2 },
+                            { q: "Riya says plants are our _____.", options: ["Friends", "Enemies", "Toys"], correct: "Friends", marks: 2 },
+                            { q: "Which planet must we care for?", options: ["Earth", "Mars", "Moon"], correct: "Earth", marks: 2 }
+                        ]
+                    },
+                    q2: { prompt: "Select the Naming Word picture:", options: [{ id: "apple", label: "Apple", svg: SVGAssets.apple }, { id: "sun", label: "Sun", svg: SVGAssets.sun }], correct: "apple", marks: 4 },
+                    q3: { svg: SVGAssets.flower, prompt: "Identify this plant naming word:", options: ["Flower", "Tree", "Fruit", "Leaf"], correct: "Flower", marks: 4 },
+                    q4: [ { singular: "Cup", correct: "Cups" }, { singular: "House", correct: "Houses" }, { singular: "Plant", correct: "Plants" } ],
+                    q5: [
+                        { word: "Riya", correct: "Proper Noun" },
+                        { word: "girl", correct: "Common Noun" },
+                        { word: "Mumbai", correct: "Proper Noun" },
+                        { word: "friend", correct: "Common Noun" }
+                    ],
+                    q6: [
+                        { text: "She eats an orange.", type: "Sentence" },
+                        { text: "Apple", type: "Word" },
+                        { text: "T", type: "Letter" },
+                        { text: "X", type: "Letter" },
+                        { text: "School", type: "Word" }
+                    ],
+                    q7: [
+                        { word: "Flower", svg: SVGAssets.flower },
+                        { word: "House", svg: SVGAssets.house },
+                        { word: "Car", svg: SVGAssets.car },
+                        { word: "Book", svg: SVGAssets.book },
+                        { word: "Sun", svg: SVGAssets.sun }
+                    ],
+                    q8: { sentence: "She eats an orange.", options: ["She", "eats", "an", "orange"], correct: ["orange"], marks: 3 },
+                    q9: { sentence: "Priya sings a beautiful song.", options: ["Priya", "sings", "beautiful", "song"], correct: ["sings"], marks: 2 }
+                }
+            }
+        ];
+
+        let currentSetIndex = 0;
+        let activeCanvas = null;
+        let activeCtx = null;
+        let isDrawing = false;
+        let currentBrushColor = '#000000';
+        let isEraser = false;
+
+        window.onload = function() {
+            renderNavButtons();
+            switchSet(0);
+        };
+
+        function renderNavButtons() {
+            const nav = document.getElementById('setNavButtons');
+            nav.innerHTML = setsData.map((data, idx) => `
+                <button onclick="switchSet(${idx})" id="navBtn_${idx}" class="px-4 py-2 rounded-xl font-bold text-sm transition btn-bounce border-2 ${idx === currentSetIndex ? 'bg-brandPurple text-white border-purple-800 shadow-md' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}">
+                    SET ${idx + 1}
+                </button>
+            `).join('');
+        }
+
+        function switchSet(index) {
+            currentSetIndex = index;
+            renderNavButtons();
+
+            document.getElementById('currentSetBadge').innerText = `S${index + 1}`;
+            document.getElementById('currentSetTitle').innerText = setsData[index].setName;
+
+            renderPaper(setsData[index]);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Clear pending speech
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.rate = 0.8; // Child friendly speed
+                utterance.pitch = 1.1;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Speech synthesis is not supported in this browser.");
+            }
+        }
+
+        function renderPaper(setData) {
+            const container = document.getElementById('paperContent');
+            const dataA = setData.partA;
+            const dataB = setData.partB;
+
+            container.innerHTML = `
+                <!-- PART A HEADER -->
+                <div class="bg-gradient-to-r from-brandBlue to-cyan-500 text-white p-4 rounded-2xl shadow-md flex justify-between items-center">
+                    <div>
+                        <h2 class="heading-font text-2xl font-bold">ELGA PART A – VOCABULARY & WRITING</h2>
+                        <p class="text-xs text-blue-100">Phonics, Listening, Word Families & Writing Skills</p>
+                    </div>
+                    <span class="bg-white/20 font-bold px-3 py-1 rounded-full text-sm">40 Marks</span>
+                </div>
+
+                <!-- Q1: Listen and Write Spelling -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q1. Write the spelling of the words you hear.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[4 Marks]</span>
+                    </div>
+                    <p class="text-xs text-slate-500">Click the listen button and type the correct word in lowercase.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        ${dataA.q1.map((item, idx) => `
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center justify-between gap-3">
+                                <button type="button" onclick="speakWord('${item.word}')" class="bg-brandYellow hover:bg-yellow-400 text-slate-800 font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-2 shadow btn-bounce">
+                                    🔊 Hear ${idx + 1}
+                                </button>
+                                <input type="text" id="q1_word_${idx}" placeholder="Type word..." class="border-2 border-slate-300 rounded-xl px-3 py-2 text-center font-bold text-lg w-36 focus:border-brandPurple focus:outline-none uppercase">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q2: Listen to sound & Circle picture -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-6">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q2. Listen to the sound & select the picture with that sound.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[12 Marks]</span>
+                    </div>
+                    ${dataA.q2.map((sub, sIdx) => `
+                        <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-200 space-y-3">
+                            <p class="font-bold text-slate-700 text-sm">${sub.label}</p>
+                            <div class="grid grid-cols-3 gap-3">
+                                ${sub.options.map(opt => `
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="q2_sub_${sIdx}" value="${opt.id}" class="peer hidden">
+                                        <div class="bg-white p-3 rounded-2xl border-2 border-slate-200 peer-checked:border-brandBlue peer-checked:bg-blue-50/50 text-center transition hover:shadow">
+                                            ${opt.svg}
+                                            <span class="block font-bold text-xs mt-2 text-slate-700">${opt.label}</span>
+                                        </div>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <!-- Q3: Word Family -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q3. Choose the word from the same word family.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[4 Marks]</span>
+                    </div>
+                    <p class="font-semibold text-slate-700">${dataA.q3.prompt}</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        ${dataA.q3.options.map((opt, oIdx) => `
+                            <label class="cursor-pointer">
+                                <input type="radio" name="q3_option" value="${opt}" class="peer hidden">
+                                <div class="bg-slate-50 border-2 border-slate-200 p-3 rounded-2xl text-center font-bold text-slate-700 peer-checked:bg-brandPurple peer-checked:text-white peer-checked:border-purple-800 transition">
+                                    ${opt}
+                                </div>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q4: Interactive Drawing Canvas -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q4. Draw and label a picture.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[6 Marks]</span>
+                    </div>
+                    <p class="font-semibold text-slate-700 text-sm">${dataA.q4.prompt}</p>
+                    
+                    <div class="bg-amber-50 p-3 rounded-2xl border border-amber-200 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-slate-600">Color:</span>
+                            <input type="color" id="brushColor" value="#000000" onchange="setPenColor(this.value)" class="w-8 h-8 rounded cursor-pointer border">
+                            <button type="button" onclick="useEraser()" class="bg-slate-200 hover:bg-slate-300 text-xs font-bold px-3 py-1.5 rounded-xl">🧹 Eraser</button>
+                            <button type="button" onclick="usePen()" class="bg-brandBlue text-white text-xs font-bold px-3 py-1.5 rounded-xl">🖌️ Pen</button>
+                        </div>
+                        <button type="button" onclick="clearCanvas()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-xl">🗑️ Clear Canvas</button>
+                    </div>
+
+                    <div class="canvas-container bg-white border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden flex justify-center">
+                        <canvas id="q4Canvas" width="500" height="220" class="cursor-crosshair w-full max-w-[500px] h-[220px]"></canvas>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <label class="font-bold text-sm text-slate-700 whitespace-nowrap">Label your drawing:</label>
+                        <input type="text" id="q4Label" placeholder="${dataA.q4.labelPlaceholder}" class="border-2 border-slate-300 rounded-xl px-3 py-2 font-bold w-full focus:outline-none focus:border-brandPurple">
+                    </div>
+                </div>
+
+                <!-- Q5: Copy Words -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q5. Copy the words accurately into the box.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[2 Marks]</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        ${dataA.q5.map((item, idx) => `
+                            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 flex items-center justify-between gap-3">
+                                <span class="font-black text-lg text-slate-800 tracking-wider">${item.word}</span>
+                                <input type="text" id="q5_word_${idx}" placeholder="Copy word here..." class="border-2 border-slate-300 rounded-xl px-3 py-1.5 font-bold text-slate-700 text-center focus:outline-none focus:border-brandBlue">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q6: Missing Letters -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q6. Write the missing letters in the words.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[5 Marks]</span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        ${dataA.q6.map((item, idx) => `
+                            <div class="bg-blue-50/50 p-3 rounded-2xl border border-blue-200 text-center">
+                                <div class="font-black text-xl text-slate-800 mb-2 tracking-widest">${item.word}</div>
+                                <input type="text" id="q6_letter_${idx}" maxlength="1" class="w-12 h-12 text-center font-black text-xl rounded-xl border-2 border-brandBlue uppercase focus:outline-none focus:ring-2 focus:ring-brandPurple mx-auto block">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q7: Letter & Picture Identification -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q7. See the letter and select the picture beginning with it.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[3 Marks]</span>
+                    </div>
+                    <div class="flex items-center gap-4 bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                        <div class="bg-brandPurple text-white font-black text-4xl w-16 h-16 rounded-2xl flex items-center justify-center heading-font shadow">
+                            ${dataA.q7.letter}
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 flex-1">
+                            ${dataA.q7.options.map(opt => `
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="q7_option" value="${opt.id}" class="peer hidden">
+                                    <div class="bg-white p-2 rounded-2xl border-2 border-slate-200 peer-checked:border-brandPurple peer-checked:bg-purple-100 text-center">
+                                        ${opt.svg}
+                                        <span class="block font-bold text-xs mt-1 text-slate-700">${opt.label}</span>
+                                    </div>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q8: Whole Words Identification -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandPurple">Q8. Circle / Select the sight words given in the sentence.</h3>
+                        <span class="bg-purple-100 text-brandPurple font-bold px-3 py-1 rounded-full text-xs">[4 Marks]</span>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-700">Sentence: "${dataA.q8.text}"</p>
+                    <p class="text-xs text-slate-500">Click on the words below to select them:</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${dataA.q8.options.map((w, idx) => `
+                            <button type="button" onclick="toggleWordSelect(this, 'q8')" class="word-chip bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 font-bold px-4 py-2 rounded-2xl text-sm" data-word="${w}">
+                                ${w}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- PART B HEADER -->
+                <div class="bg-gradient-to-r from-brandPurple to-pink-500 text-white p-4 rounded-2xl shadow-md flex justify-between items-center mt-10">
+                    <div>
+                        <h2 class="heading-font text-2xl font-bold">ELGA PART B – COMPREHENSION & GRAMMAR</h2>
+                        <p class="text-xs text-purple-100">Reading Stories, Naming Words & Action Words</p>
+                    </div>
+                    <span class="bg-white/20 font-bold px-3 py-1 rounded-full text-sm">40 Marks</span>
+                </div>
+
+                <!-- Q1: Story Comprehension -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q1. Read the story and answer the questions.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[10 Marks]</span>
+                    </div>
+                    
+                    <div class="bg-amber-50 p-5 rounded-2xl border-2 border-amber-200 space-y-2">
+                        <h4 class="heading-font font-bold text-amber-900 text-lg">${dataB.q1.title}</h4>
+                        <p class="text-slate-800 leading-relaxed font-medium text-sm sm:text-base">${dataB.q1.text}</p>
+                    </div>
+
+                    <div class="space-y-4 mt-4">
+                        ${dataB.q1.questions.map((qObj, qIdx) => `
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                                <p class="font-bold text-slate-800 text-sm">${qIdx + 1}. ${qObj.q} <span class="text-xs text-brandBlue font-normal">(2 Marks)</span></p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                    ${qObj.options.map(opt => `
+                                        <label class="cursor-pointer">
+                                            <input type="radio" name="b_q1_sub_${qIdx}" value="${opt}" class="peer hidden">
+                                            <div class="bg-white border-2 border-slate-200 p-2 rounded-xl text-center font-semibold text-xs text-slate-700 peer-checked:bg-brandBlue peer-checked:text-white peer-checked:border-blue-700 transition">
+                                                ${opt}
+                                            </div>
+                                        </label>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q2: Naming Words Picture -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q2. Select the picture that represents a Naming Word.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[4 Marks]</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        ${dataB.q2.options.map(opt => `
+                            <label class="cursor-pointer">
+                                <input type="radio" name="b_q2_option" value="${opt.id}" class="peer hidden">
+                                <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 peer-checked:border-brandGreen peer-checked:bg-green-50 text-center">
+                                    ${opt.svg}
+                                    <span class="block font-bold text-sm mt-2 text-slate-800">${opt.label}</span>
+                                </div>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q3: Correct Naming Word for Image -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q3. Select the correct naming word for this picture.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[4 Marks]</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center gap-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <div class="bg-white p-4 rounded-2xl border-2 border-slate-200 shadow-sm">
+                            ${dataB.q3.svg}
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 w-full">
+                            ${dataB.q3.options.map(opt => `
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="b_q3_option" value="${opt}" class="peer hidden">
+                                    <div class="bg-white p-3 rounded-xl border-2 border-slate-200 text-center font-bold text-slate-700 peer-checked:bg-brandBlue peer-checked:text-white transition">
+                                        ${opt}
+                                    </div>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4: Plurals (Many forms) -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q4. Write the 'Many' (Plural) form of the given words.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[3 Marks]</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        ${dataB.q4.map((item, idx) => `
+                            <div class="bg-purple-50/50 p-3 rounded-2xl border border-purple-200 text-center">
+                                <span class="font-bold text-slate-700 text-sm block mb-1">One: <span class="text-brandPurple font-black">${item.singular}</span></span>
+                                <input type="text" id="b_q4_${idx}" placeholder="Write many..." class="border-2 border-slate-300 rounded-xl px-3 py-1.5 text-center font-bold text-slate-800 w-full focus:outline-none focus:border-brandPurple uppercase">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q5: Proper Noun vs Common Noun Sorting -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q5. Sort the words into Proper Nouns and Common Nouns.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[4 Marks]</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        ${dataB.q5.map((item, idx) => `
+                            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 flex items-center justify-between gap-2">
+                                <span class="font-black text-brandPurple text-lg px-2">${item.word}</span>
+                                <select id="b_q5_${idx}" class="border-2 border-slate-300 font-bold rounded-xl px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-brandBlue">
+                                    <option value="">-- Choose Category --</option>
+                                    <option value="Proper Noun">Proper Noun (Special Name)</option>
+                                    <option value="Common Noun">Common Noun (General Name)</option>
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q6: Letter / Word / Sentence Sorting -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q6. Sort into Letter, Word, or Sentence.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[5 Marks]</span>
+                    </div>
+                    <div class="space-y-3">
+                        ${dataB.q6.map((item, idx) => `
+                            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                                <span class="font-bold text-slate-800 text-sm sm:text-base px-2">"${item.text}"</span>
+                                <select id="b_q6_${idx}" class="border-2 border-slate-300 font-bold rounded-xl px-3 py-1.5 text-xs sm:text-sm bg-white focus:outline-none focus:border-brandBlue w-full sm:w-auto">
+                                    <option value="">-- Choose Type --</option>
+                                    <option value="Letter">Letter</option>
+                                    <option value="Word">Word</option>
+                                    <option value="Sentence">Sentence</option>
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q7: Match Pictures with Words -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q7. Match pictures with the correct words.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[5 Marks]</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-5 gap-3">
+                        ${dataB.q7.map((item, idx) => `
+                            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 text-center flex flex-col items-center justify-between gap-2">
+                                <div class="bg-white p-2 rounded-xl border w-full">
+                                    ${item.svg}
+                                </div>
+                                <select id="b_q7_${idx}" class="border-2 border-slate-300 font-bold text-xs rounded-xl px-2 py-1 bg-white w-full focus:outline-none focus:border-brandPurple">
+                                    <option value="">Select word</option>
+                                    ${dataB.q7.map(opt => `<option value="${opt.word}">${opt.word}</option>`).join('')}
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q8: Select Naming Words in Sentence -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q8. Select the Naming Words in the sentence.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[3 Marks]</span>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-700">Sentence: "${dataB.q8.sentence}"</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${dataB.q8.options.map(w => `
+                            <button type="button" onclick="toggleWordSelect(this, 'b_q8')" class="word-chip bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 font-bold px-4 py-2 rounded-2xl text-sm" data-word="${w}">
+                                ${w}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Q9: Action Words -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 question-card space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="heading-font text-lg font-bold text-brandBlue">Q9. Select the Action Word in the sentence.</h3>
+                        <span class="bg-blue-100 text-brandBlue font-bold px-3 py-1 rounded-full text-xs">[2 Marks]</span>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-700">Sentence: "${dataB.q9.sentence}"</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${dataB.q9.options.map(w => `
+                            <button type="button" onclick="toggleWordSelect(this, 'b_q9')" class="word-chip bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 font-bold px-4 py-2 rounded-2xl text-sm" data-word="${w}">
+                                ${w}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Initialize drawing canvas after DOM insertion
+            setTimeout(initCanvas, 100);
+        }
+
+        function toggleWordSelect(btn, group) {
+            btn.classList.toggle('selected');
+        }
+
+        function initCanvas() {
+            activeCanvas = document.getElementById('q4Canvas');
+            if (!activeCanvas) return;
+            activeCtx = activeCanvas.getContext('2d');
+
+            // Responsive scale support
+            const rect = activeCanvas.getBoundingClientRect();
+            activeCanvas.width = rect.width || 500;
+            activeCanvas.height = 220;
+
+            activeCtx.lineWidth = 4;
+            activeCtx.lineCap = 'round';
+            activeCtx.strokeStyle = currentBrushColor;
+
+            function getPos(e) {
+                const cRect = activeCanvas.getBoundingClientRect();
+                let clientX = e.clientX;
+                let clientY = e.clientY;
+
+                if (e.touches && e.touches.length > 0) {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                }
+
+                return {
+                    x: clientX - cRect.left,
+                    y: clientY - cRect.top
+                };
+            }
+
+            function startDrawing(e) {
+                isDrawing = true;
+                const pos = getPos(e);
+                activeCtx.beginPath();
+                activeCtx.moveTo(pos.x, pos.y);
+            }
+
+            function draw(e) {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const pos = getPos(e);
+                if (isEraser) {
+                    activeCtx.clearRect(pos.x - 10, pos.y - 10, 20, 20);
+                } else {
+                    activeCtx.lineTo(pos.x, pos.y);
+                    activeCtx.stroke();
+                }
+            }
+
+            function stopDrawing() {
+                isDrawing = false;
+            }
+
+            activeCanvas.addEventListener('mousedown', startDrawing);
+            activeCanvas.addEventListener('mousemove', draw);
+            activeCanvas.addEventListener('mouseup', stopDrawing);
+            activeCanvas.addEventListener('mouseleave', stopDrawing);
+
+            activeCanvas.addEventListener('touchstart', startDrawing);
+            activeCanvas.addEventListener('touchmove', draw);
+            activeCanvas.addEventListener('touchend', stopDrawing);
+        }
+
+        function setPenColor(color) {
+            currentBrushColor = color;
+            isEraser = false;
+            if (activeCtx) activeCtx.strokeStyle = color;
+        }
+
+        function useEraser() {
+            isEraser = true;
+        }
+
+        function usePen() {
+            isEraser = false;
+            if (activeCtx) activeCtx.strokeStyle = currentBrushColor;
+        }
+
+        function clearCanvas() {
+            if (activeCtx && activeCanvas) {
+                activeCtx.clearRect(0, 0, activeCanvas.width, activeCanvas.height);
+            }
+        }
+
+        function resetCurrentSet() {
+            switchSet(currentSetIndex);
+        }
+
+        function submitTest() {
+            const data = setsData[currentSetIndex];
+            let score = 0;
+            let total = 80;
+            let attemptedCount = 0;
+            let totalQuestionsCount = 0;
+            let correctCount = 0;
+
+            const breakdown = [];
+
+            // Q1 Part A (4 Marks)
+            data.partA.q1.forEach((item, idx) => {
+                totalQuestionsCount++;
+                const val = (document.getElementById(`q1_word_${idx}`)?.value || '').trim().toLowerCase();
+                if (val !== '') attemptedCount++;
+                if (val === item.word.toLowerCase()) {
+                    score += item.marks;
+                    correctCount++;
+                    breakdown.push(`Part A Q1 (${idx + 1}): Correct (+${item.marks})`);
+                } else {
+                    breakdown.push(`Part A Q1 (${idx + 1}): Incorrect (Expected: ${item.word})`);
+                }
+            });
+
+            // Q2 Part A (12 Marks)
+            data.partA.q2.forEach((sub, sIdx) => {
+                totalQuestionsCount++;
+                const selected = document.querySelector(`input[name="q2_sub_${sIdx}"]:checked`);
+                if (selected) attemptedCount++;
+                if (selected && selected.value === sub.correct) {
+                    score += sub.marks;
+                    correctCount++;
+                    breakdown.push(`Part A Q2 (${sIdx + 1}): Correct (+${sub.marks})`);
+                } else {
+                    breakdown.push(`Part A Q2 (${sIdx + 1}): Incorrect`);
+                }
+            });
+
+            // Q3 Part A (4 Marks)
+            totalQuestionsCount++;
+            const q3Selected = document.querySelector(`input[name="q3_option"]:checked`);
+            if (q3Selected) attemptedCount++;
+            if (q3Selected && q3Selected.value === data.partA.q3.correct) {
+                score += data.partA.q3.marks;
+                correctCount++;
+                breakdown.push(`Part A Q3: Correct (+${data.partA.q3.marks})`);
+            } else {
+                breakdown.push(`Part A Q3: Incorrect (Expected: ${data.partA.q3.correct})`);
+            }
+
+            // Q4 Part A (6 Marks - Manual check note)
+            const q4LabelVal = (document.getElementById('q4Label')?.value || '').trim();
+            if (q4LabelVal !== '') attemptedCount++;
+            breakdown.push(`Part A Q4: Drawing Canvas Submitted (6 Marks pending manual teacher review)`);
+
+            // Q5 Part A (2 Marks)
+            data.partA.q5.forEach((item, idx) => {
+                totalQuestionsCount++;
+                const val = (document.getElementById(`q5_word_${idx}`)?.value || '').trim().toLowerCase();
+                if (val !== '') attemptedCount++;
+                if (val === item.word.toLowerCase()) {
+                    score += item.marks;
+                    correctCount++;
+                    breakdown.push(`Part A Q5 (${idx + 1}): Correct (+${item.marks})`);
+                } else {
+                    breakdown.push(`Part A Q5 (${idx + 1}): Incorrect`);
+                }
+            });
+
+            // Q6 Part A (5 Marks)
+            data.partA.q6.forEach((item, idx) => {
+                totalQuestionsCount++;
+                const val = (document.getElementById(`q6_letter_${idx}`)?.value || '').trim().toUpperCase();
+                if (val !== '') attemptedCount++;
+                if (val === item.correct.toUpperCase()) {
+                    score += 1;
+                    correctCount++;
+                    breakdown.push(`Part A Q6 (${idx + 1}): Correct (+1)`);
+                } else {
+                    breakdown.push(`Part A Q6 (${idx + 1}): Incorrect (Expected: ${item.correct})`);
+                }
+            });
+
+            // Q7 Part A (3 Marks)
+            totalQuestionsCount++;
+            const q7Selected = document.querySelector(`input[name="q7_option"]:checked`);
+            if (q7Selected) attemptedCount++;
+            if (q7Selected && q7Selected.value === data.partA.q7.correct) {
+                score += data.partA.q7.marks;
+                correctCount++;
+                breakdown.push(`Part A Q7: Correct (+${data.partA.q7.marks})`);
+            } else {
+                breakdown.push(`Part A Q7: Incorrect`);
+            }
+
+            // Q8 Part A (4 Marks)
+            totalQuestionsCount++;
+            const q8SelectedBtns = Array.from(document.querySelectorAll('.word-chip.selected[onclick*="q8"]')).map(b => b.getAttribute('data-word'));
+            if (q8SelectedBtns.length > 0) attemptedCount++;
+            const isQ8Match = data.partA.q8.wholeWords.every(w => q8SelectedBtns.includes(w)) && q8SelectedBtns.length === data.partA.q8.wholeWords.length;
+            if (isQ8Match) {
+                score += data.partA.q8.marks;
+                correctCount++;
+                breakdown.push(`Part A Q8: Correct (+${data.partA.q8.marks})`);
+            } else {
+                breakdown.push(`Part A Q8: Incorrect`);
+            }
+
+            // PART B Q1 (10 Marks)
+            data.partB.q1.questions.forEach((qObj, qIdx) => {
+                totalQuestionsCount++;
+                const selected = document.querySelector(`input[name="b_q1_sub_${qIdx}"]:checked`);
+                if (selected) attemptedCount++;
+                if (selected && selected.value === qObj.correct) {
+                    score += qObj.marks;
+                    correctCount++;
+                    breakdown.push(`Part B Q1 (${qIdx + 1}): Correct (+${qObj.marks})`);
+                } else {
+                    breakdown.push(`Part B Q1 (${qIdx + 1}): Incorrect`);
+                }
+            });
+
+            // PART B Q2 (4 Marks)
+            totalQuestionsCount++;
+            const bQ2Sel = document.querySelector(`input[name="b_q2_option"]:checked`);
+            if (bQ2Sel) attemptedCount++;
+            if (bQ2Sel && bQ2Sel.value === data.partB.q2.correct) {
+                score += data.partB.q2.marks;
+                correctCount++;
+                breakdown.push(`Part B Q2: Correct (+${data.partB.q2.marks})`);
+            } else {
+                breakdown.push(`Part B Q2: Incorrect`);
+            }
+
+            // PART B Q3 (4 Marks)
+            totalQuestionsCount++;
+            const bQ3Sel = document.querySelector(`input[name="b_q3_option"]:checked`);
+            if (bQ3Sel) attemptedCount++;
+            if (bQ3Sel && bQ3Sel.value === data.partB.q3.correct) {
+                score += data.partB.q3.marks;
+                correctCount++;
+                breakdown.push(`Part B Q3: Correct (+${data.partB.q3.marks})`);
+            } else {
+                breakdown.push(`Part B Q3: Incorrect`);
+            }
+
+            // PART B Q4 (3 Marks)
+            data.partB.q4.forEach((item, idx) => {
+                totalQuestionsCount++;
+                const val = (document.getElementById(`b_q4_${idx}`)?.value || '').trim().toLowerCase();
+                if (val !== '') attemptedCount++;
+                if (val === item.correct.toLowerCase()) {
+                    score += 1;
+                    correctCount++;
+                    breakdown.push(`Part B Q4 (${idx + 1}): Correct (+1)`);
+                } else {
+                    breakdown.push(`Part B Q4 (${idx + 1}): Incorrect (Expected: ${item.correct})`);
+                }
+            });
+
+            // PART B Q5 (4 Marks)
+            data.partB.q5.forEach((item, idx) => {
+                totalQuestionsCount++;
+                const val = document.getElementById(`b_q5_${idx}`)?.value;
+                if (val) attemptedCount++;
+                if (val === item.correct) {
+                    score += 1;
+                    correctCount++;
+                    breakdown.push(`Part B Q5 (${idx + 1}): Correct (+1)`);
+                } else {
+                    breakdown.push(`Part B Q5 (${idx + 1}): Incorrect`);
+                }
+            });
+
+            // PART B Q6 (5 Marks)
+            data.partB.q6.forEach((item, idx) => {
+                totalQuestionsCount++;
+                const val = document.getElementById(`b_q6_${idx}`)?.value;
+                if (val) attemptedCount++;
+                if (val === item.type) {
+                    score += 1;
+                    correctCount++;
+                    breakdown.push(`Part B Q6 (${idx + 1}): Correct (+1)`);
+                } else {
+                    breakdown.push(`Part B Q6 (${idx + 1}): Incorrect`);
+                }
+            });
+
+            // PART B Q7 (5 Marks)
+            data.partB.q7.forEach((item, idx) => {
+                totalQuestionsCount++;
+                const val = document.getElementById(`b_q7_${idx}`)?.value;
+                if (val) attemptedCount++;
+                if (val === item.word) {
+                    score += 1;
+                    correctCount++;
+                    breakdown.push(`Part B Q7 (${idx + 1}): Correct (+1)`);
+                } else {
+                    breakdown.push(`Part B Q7 (${idx + 1}): Incorrect`);
+                }
+            });
+
+            // PART B Q8 (3 Marks)
+            totalQuestionsCount++;
+            const bQ8Btns = Array.from(document.querySelectorAll('.word-chip.selected[onclick*="b_q8"]')).map(b => b.getAttribute('data-word'));
+            if (bQ8Btns.length > 0) attemptedCount++;
+            const isQ8BMatched = data.partB.q8.correct.every(w => bQ8Btns.includes(w)) && bQ8Btns.length === data.partB.q8.correct.length;
+            if (isQ8BMatched) {
+                score += data.partB.q8.marks;
+                correctCount++;
+                breakdown.push(`Part B Q8: Correct (+${data.partB.q8.marks})`);
+            } else {
+                breakdown.push(`Part B Q8: Incorrect`);
+            }
+
+            // PART B Q9 (2 Marks)
+            totalQuestionsCount++;
+            const bQ9Btns = Array.from(document.querySelectorAll('.word-chip.selected[onclick*="b_q9"]')).map(b => b.getAttribute('data-word'));
+            if (bQ9Btns.length > 0) attemptedCount++;
+            const isQ9Matched = data.partB.q9.correct.every(w => bQ9Btns.includes(w)) && bQ9Btns.length === data.partB.q9.correct.length;
+            if (isQ9Matched) {
+                score += data.partB.q9.marks;
+                correctCount++;
+                breakdown.push(`Part B Q9: Correct (+${data.partB.q9.marks})`);
+            } else {
+                breakdown.push(`Part B Q9: Incorrect`);
+            }
+
+            // Display Results
+            const percentage = Math.round((score / total) * 100);
+            document.getElementById('resScore').innerText = `${score} / ${total}`;
+            document.getElementById('resPercentage').innerText = `${percentage}%`;
+            document.getElementById('resCorrect').innerText = correctCount;
+            document.getElementById('resAttempted').innerText = `${attemptedCount} / ${totalQuestionsCount}`;
+
+            // Badge & feedback text
+            let badge = "🌟";
+            let gradeMsg = "Excellent Job!";
+            if (percentage < 50) {
+                badge = "📚";
+                gradeMsg = "Keep Practising!";
+            } else if (percentage < 75) {
+                badge = "😊";
+                gradeMsg = "Good Try!";
+            } else if (percentage < 90) {
+                badge = "👏";
+                gradeMsg = "Very Good!";
+            }
+
+            document.getElementById('badgeContainer').innerText = badge;
+            document.getElementById('resultGradeText').innerText = gradeMsg;
+
+            // Render breakdown
+            const bdDiv = document.getElementById('detailedBreakdown');
+            bdDiv.innerHTML = breakdown.map(line => `
+                <div class="py-1 px-2 rounded border-b border-slate-200 text-xs ${line.includes('Correct') ? 'text-emerald-700 bg-emerald-50/50' : 'text-slate-600'}">
+                    ${line}
+                </div>
+            `).join('');
+
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
