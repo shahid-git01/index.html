@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 1 English - ELGA Practice Test | 5 Sets</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f3f7fb;margin:0;color:#243447}
+header{background:#2457a6;color:white;padding:22px;text-align:center}
+header h1{margin:0 0 7px;font-size:28px}
+header p{margin:3px;font-size:15px}
+.container{max-width:1050px;margin:20px auto;padding:0 14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{border:0;padding:11px 18px;border-radius:8px;background:#dbe8f8;cursor:pointer;font-weight:bold}
+.tabs button.active{background:#2457a6;color:#fff}
+.set{display:none}.set.active{display:block}
+.info{background:white;padding:15px;border-radius:10px;margin-bottom:15px;box-shadow:0 2px 8px #0001}
+.section{background:#fff;margin:18px 0;padding:20px;border-radius:12px;box-shadow:0 2px 9px #0001}
+.section h2{margin-top:0;color:#2457a6;border-bottom:2px solid #dbe8f8;padding-bottom:8px}
+.question{padding:14px 4px;border-bottom:1px solid #e6edf5}
+.question:last-child{border-bottom:0}
+.qtitle{font-weight:bold;margin-bottom:10px}
+.options{display:flex;flex-wrap:wrap;gap:10px}
+.option{border:1px solid #c9d6e5;border-radius:9px;padding:8px 12px;background:#fafcff;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.option:hover{background:#eef5ff}
+.option input{accent-color:#2457a6}
+.pic{font-size:42px;display:block;margin:6px 0}
+.picgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:10px 0}
+.piccard{border:1px solid #ccd8e6;border-radius:10px;padding:10px;text-align:center;background:#fbfdff}
+.piccard .emoji{font-size:40px;display:block}
+input[type=text],textarea,select{padding:9px;border:1px solid #b9c9da;border-radius:7px;font-size:16px}
+input[type=text]{width:150px}
+.wordbank{background:#f5f8fc;padding:10px;border-radius:8px;margin:8px 0;line-height:2}
+button.small{border:0;background:#2457a6;color:white;padding:7px 10px;border-radius:6px;cursor:pointer}
+.sound{margin-left:8px}
+.scorebox{position:sticky;bottom:10px;background:#fff;border:2px solid #2457a6;border-radius:12px;padding:14px;text-align:center;box-shadow:0 3px 12px #0002}
+.submit{background:#198754;color:white;border:0;padding:13px 24px;border-radius:8px;font-size:17px;font-weight:bold;cursor:pointer}
+.reset{background:#6c757d;color:white;border:0;padding:10px 18px;border-radius:8px;cursor:pointer;margin-left:8px}
+.result{font-size:20px;font-weight:bold;margin-top:10px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:600px}
+.mrow{display:contents}
+.mrow span{padding:8px;background:#f7f9fc;border:1px solid #e0e7ef}
+@media(max-width:600px){header h1{font-size:22px}.section{padding:13px}.match{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>Class 1 English - ELGA Practice Test</h1>
+<p>Units 1-4 | Home • Friends • Neighborhood & Community • Sharing Planet with Plants</p>
+<p><b>5 Practice Sets | 80 Marks Each</b></p>
+</header>
+<div class="container">
+<div class="info">
+<b>How to use:</b> Select a set → answer all questions → use 🔊 Hear for listening questions → click <b>Submit Test</b>.
+For picture questions, emojis are used as simple online practice pictures.
+</div>
+<div class="tabs" id="tabs"></div>
+<div id="sets"></div>
+</div>
+
+<script>
+const sets = [
+/* SET 1 */
+{
+spell:["cat","tree","friend","school"], 
+begin:[
+["🐱","cat"],["🍎","apple"],["🐶","dog"],["☀️","sun"]
+],
+middle:[["🐀","rat"],["🪴","pot"],["🖊️","pen"],["🐱","cat"]],
+end:[["🐱","cat"],["🧢","cap"],["☀️","sun"],["🐶","dog"]],
+families:[["cat","hat","dog"],["pin","win","sun"],["cake","make","car"],["run","fun","pen"]],
+trees:[["📄","Paper"],["🍎","Fruit"],["🌳","Shade"],["🧵","Cotton"]],
+story:"Riya lives in a small village. She has a dog named Bruno. Riya likes to play with Bruno. One day, her friend Neha visits her. They share a ball and play together.",
+storyQs:[
+["Who lives in the village?","Riya","Neha","Bruno"],["What is the dog's name?","Bruno","Riya","Neha"],
+["Who visits Riya?","Neha","Bruno","Mohan"],["What do they share?","A ball","A book","A cake"],["What do Riya and Neha do?","Play","Sleep","Cook"],
+["Is Bruno a dog?","Yes","No","Maybe"],["Who is Riya's friend?","Neha","Bruno","Mumbai"],["Where does Riya live?","Village","London","School"],
+["What does Riya like to do?","Play","Read","Swim"],["Do they play together?","Yes","No","Never"]
+],
+naming:[["🐶 Dog","🏃 Run","📚 Book"],["🍎 Apple","😴 Sleep","✍️ Write"],["👩 Mother","🍴 Eat","🎵 Sing"],["🏫 School","🏃 Jump","😊 Happy"]],
+many:[["cat","cats"],["book","books"],["dog","dogs"]],
+proper:["Mohan","Priya","Mumbai","Riya"], common:["table","orange","dog","girl"],
+sort:["Mohan","table","Priya","orange","Mumbai","dog","Rani","school"],
+match:[["Mother","👩"],["Cake","🍰"],["Place","🏫"],["Fruits","🍎"]],
+action:["jump","read","cooks","write","sing"],
+missing:[["M _ n","a"],["b _ d","e"],["p _ t","o"],["f _ n","i"],["b _ g","a"]],
+copy:["wet","pet","jam","dog","bag","bed","jet","fox"],
+letterPics:[["C","🐱","cat"],["F","🌸","flower"],["I","🍦","ice cream"],["L","🍃","leaf"]],
+actionsPics:[["🏃","jump"],["🚶","walk"],["💃","dance"],["✍️","write"]]
+},
+/* SET 2 */
+{
+spell:["home","plant","mother","book"],
+begin:[["🐟","fish"],["🍌","banana"],["🌳","tree"],["🐱","cat"]],
+middle:[["🐱","cat"],["🛏️","bed"],["🐕","dog"],["☀️","sun"]],
+end:[["🐶","dog"],["🐱","cat"],["☀️","sun"],["🛏️","bed"]],
+families:[["at","cat","dog"],["an","man","pen"],["og","dog","sun"],["in","pin","hat"]],
+trees:[["🍎","Fruit"],["📄","Paper"],["🪵","Wood"],["🌳","Shade"]],
+story:"Aman and his best friend Ravi go to school together. Aman helps Ravi carry his books. Ravi shares his lunch with Aman. They are happy because good friends help and share.",
+storyQs:[
+["Who is Aman's best friend?","Ravi","Riya","Mohan"],["Where do they go?","School","Park","Market"],
+["What does Aman carry?","Books","Fruit","Toys"],["Who shares lunch?","Ravi","Aman","Teacher"],["Why are they happy?","They help and share","They sleep","They run"],
+["Are Aman and Ravi friends?","Yes","No","Maybe"],["What do they carry?","Books","Shoes","Plants"],["What do friends do?","Help","Fight","Hide"],
+["What does Ravi share?","Lunch","Ball","Book"],["Do they go together?","Yes","No","Never"]
+],
+naming:[["👧 Girl","🏃 Run","📖 Read"],["🏠 House","😊 Happy","🎵 Sing"],["🐕 Dog","✍️ Write","🏃 Jump"],["🍎 Fruit","😴 Sleep","💃 Dance"]],
+many:[["book","books"],["girl","girls"],["tree","trees"]],
+proper:["Aman","Ravi","Latur","Neha"], common:["school","book","dog","friend"],
+sort:["Aman","school","Ravi","book","Latur","dog","Neha","girl"],
+match:[["Mother","👩"],["Cake","🍰"],["Place","🏠"],["Fruits","🍌"]],
+action:["run","walk","cook","dance","play"],
+missing:[["M _ m","a"],["b _ d","e"],["f _ x","o"],["n _ p","a"],["k _ t","i"]],
+copy:["sun","run","fun","map","cap","nap","box","top"],
+letterPics:[["C","🍰","cake"],["F","🪭","fan"],["I","🏠","igloo"],["L","💡","lamp"]],
+actionsPics:[["🏃","run"],["🪑","sit"],["🍴","eat"],["😴","sleep"]]
+},
+/* SET 3 */
+{
+spell:["house","tree","school","friend"],
+begin:[["🚌","bus"],["🐱","cat"],["🍊","orange"],["🐟","fish"]],
+middle:[["🐀","rat"],["🧢","cap"],["🐕","dog"],["🖊️","pen"]],
+end:[["🐱","cat"],["🐶","dog"],["☀️","sun"],["🚌","bus"]],
+families:[["at","bat","dog"],["ap","cap","pen"],["an","man","cat"],["og","dog","sun"]],
+trees:[["🍊","Fruit"],["📄","Paper"],["🪵","Wood"],["👕","Cotton"]],
+story:"Priya sees a little plant near her home. She gives it water every morning. Her brother helps her. After some days, the plant grows into a healthy green plant.",
+storyQs:[
+["What does Priya see?","A plant","A dog","A car"],["Where is the plant?","Near her home","At school","In a shop"],
+["What does Priya give the plant?","Water","Milk","Food"],["When does she water it?","Every morning","At night","On Sunday"],
+["Who helps Priya?","Her brother","Her friend","Her teacher"],["What happens after some days?","The plant grows","It sleeps","It disappears"],
+["What colour is the healthy plant?","Green","Blue","Red"],["Should we care for plants?","Yes","No","Maybe"],
+["What does a plant need?","Water","A toy","A book"],["Does Priya care for the plant?","Yes","No","Never"]
+],
+naming:[["🌳 Tree","🏃 Run","✍️ Write"],["🏠 Home","😊 Smile","🍎 Eat"],["👦 Boy","🏃 Walk","🎵 Sing"],["🌸 Flower","😴 Sleep","💃 Dance"]],
+many:[["plant","plants"],["flower","flowers"],["tree","trees"]],
+proper:["Priya","Rohan","Mumbai","Seema"], common:["plant","home","brother","flower"],
+sort:["Priya","plant","Rohan","home","Mumbai","tree","Seema","flower"],
+match:[["Mother","👩"],["Cake","🍰"],["Place","🏫"],["Fruits","🍊"]],
+action:["jump","read","cook","write","sing"],
+missing:[["c _ t","a"],["p _ n","i"],["r _ n","u"],["b _ g","a"],["d _ g","o"]],
+copy:["wet","pet","jam","bed","jet","net","gap","map"],
+letterPics:[["C","☕","cup"],["F","🌸","flower"],["I","🍦","ice cream"],["L","🍭","lollipop"]],
+actionsPics:[["🏊","swim"],["💃","dance"],["🎵","sing"],["✍️","write"]]
+},
+/* SET 4 */
+{
+spell:["friend","garden","paper","mother"],
+begin:[["🐱","cat"],["🐶","dog"],["🐟","fish"],["🍎","apple"]],
+middle:[["🐀","rat"],["🪣","bag"],["🖊️","pen"],["🐕","dog"]],
+end:[["🧢","cap"],["🐱","cat"],["🐶","dog"],["☀️","sun"]],
+families:[["at","hat","dog"],["in","pin","cat"],["ap","map","sun"],["og","log","pen"]],
+trees:[["🍎","Fruit"],["📄","Paper"],["🪵","Wood"],["☂️","Shade"]],
+story:"Rohan lives near a school. His friend Seema visits him after school. They read a storybook together. Rohan reads while Seema listens. They thank each other.",
+storyQs:[
+["Who lives near a school?","Rohan","Seema","Priya"],["Who visits Rohan?","Seema","Riya","Aman"],
+["When does Seema visit?","After school","At night","In the morning"],["What do they read?","A storybook","A newspaper","A map"],
+["Who reads?","Rohan","Seema","Both"],["Who listens?","Seema","Rohan","Teacher"],["Do they read together?","Yes","No","Never"],["What do they say at the end?","Thank you","Good night","Hello"],
+["Are they friends?","Yes","No","Maybe"],["Where does Rohan live?","Near a school","In London","Near a river"]
+],
+naming:[["👩 Mother","🏃 Run","📖 Read"],["🏫 School","😊 Smile","🎵 Sing"],["🐱 Cat","✍️ Write","🏃 Jump"],["🌳 Tree","😴 Sleep","💃 Dance"]],
+many:[["cat","cats"],["book","books"],["flower","flowers"]],
+proper:["Rohan","Seema","Latur","Priya"], common:["school","storybook","cat","tree"],
+sort:["Rohan","school","Seema","book","Latur","cat","Priya","tree"],
+match:[["Mother","👩"],["Cake","🍰"],["Place","🏫"],["Fruits","🍎"]],
+action:["jump","run","walk","cook","sing"],
+missing:[["M _ n","a"],["p _ t","o"],["f _ n","i"],["c _ p","a"],["d _ g","o"]],
+copy:["wet","pet","jam","dog","bus","pen","net","nap"],
+letterPics:[["C","🐱","cat"],["F","🌸","flower"],["I","🍦","ice cream"],["L","💡","lamp"]],
+actionsPics:[["🚶","walk"],["🍳","cook"],["🎵","sing"],["📖","read"]]
+},
+/* SET 5 */
+{
+spell:["friend","orange","school","tree"],
+begin:[["🐶","dog"],["🐱","cat"],["🍎","apple"],["🌳","tree"]],
+middle:[["🐀","rat"],["🧢","cap"],["🐕","dog"],["🖊️","pen"]],
+end:[["🐱","cat"],["🧢","cap"],["☀️","sun"],["🐶","dog"]],
+families:[["at","bat","dog"],["ap","cap","pen"],["an","man","cat"],["og","dog","sun"]],
+trees:[["🍎","Fruit"],["📄","Paper"],["🪵","Wood"],["👕","Cotton"]],
+story:"Laxmi and Priya are neighbours. They see an old woman carrying a bag. The girls help her carry the bag to her home. The woman thanks them for their kindness.",
+storyQs:[
+["Who are neighbours?","Laxmi and Priya","Rohan and Seema","Aman and Ravi"],["Whom do they see?","An old woman","A teacher","A boy"],
+["What is the woman carrying?","A bag","A book","A ball"],["Who helps her?","Laxmi and Priya","Rohan","Aman"],["Where do they take the bag?","To her home","To school","To a shop"],
+["What does the woman say?","Thank you","Hello","Good night"],["Why does she thank them?","For helping her","For singing","For reading"],["Are Laxmi and Priya kind?","Yes","No","Maybe"],
+["Where do they live?","Near each other","In London","At school"],["What should neighbours do?","Help each other","Fight","Hide"]
+],
+naming:[["👦 Boy","🏃 Run","✍️ Write"],["🏠 Home","😊 Happy","🎵 Sing"],["👩 Mother","🏃 Jump","📖 Read"],["🌳 Tree","😴 Sleep","🍴 Eat"]],
+many:[["dog","dogs"],["book","books"],["tree","trees"]],
+proper:["Laxmi","Priya","Mumbai","Rohan"], common:["woman","bag","home","tree"],
+sort:["Laxmi","woman","Priya","bag","Mumbai","home","Rohan","tree"],
+match:[["Mother","👩"],["Cake","🍰"],["Place","🏠"],["Fruits","🍊"]],
+action:["jump","run","walk","write","read"],
+missing:[["M _ n","a"],["b _ d","e"],["p _ n","i"],["f _ x","o"],["m _ p","a"]],
+copy:["wet","pet","jam","dog","bag","bed","fox","bus"],
+letterPics:[["C","☕","cup"],["F","🌸","flower"],["I","🏠","igloo"],["L","🍃","leaf"]],
+actionsPics:[["🏃","run"],["🚶","walk"],["✍️","write"],["🍴","eat"]]
+}
+];
+
+const tabs=document.getElementById("tabs"), setsEl=document.getElementById("sets");
+sets.forEach((s,si)=>{
+  const b=document.createElement("button"); b.textContent="SET "+(si+1);
+  b.onclick=()=>showSet(si); tabs.appendChild(b);
+  const div=document.createElement("div"); div.className="set"; div.id="set"+si;
+  div.innerHTML=buildSet(s,si); setsEl.appendChild(div);
+});
+function showSet(i){
+ document.querySelectorAll(".tabs button").forEach((b,j)=>b.classList.toggle("active",j===i));
+ document.querySelectorAll(".set").forEach((x,j)=>x.classList.toggle("active",j===i));
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+showSet(0);
+
+function radio(name,val,label){return `<label class="option"><input type="radio" name="${name}" value="${val}"> ${label}</label>`}
+function q(i,title,body,marks=1){return `<div class="question"><div class="qtitle">${i}. ${title} <span style="float:right">[${marks} M]</span></div>${body}</div>`}
+
+function buildSet(s,si){
+ let h=`<div class="info"><b>Set ${si+1}</b> — 80 Marks<br>Units: Home, Friends, Neighborhood & Community, Sharing Planet with Plants</div>`;
+ h+=`<div class="section"><h2>ELGA PART A — Vocabulary & Writing</h2>`;
+ h+=q(1,"Write the spelling of the word you hear. [4 M]",s.spell.map((w,i)=>`<div style="margin:9px 0">${i+1}. <button class="small" onclick="speak('${w}')">🔊 Hear</button> <input type="text" name="s${si}_spell${i}" placeholder="Write word"></div>`).join(""),4);
+ h+=q(2,"Listen to the sound. Circle the picture with that sound — Beginning, Middle and End sounds. [12 M]",
+ `<h4>Beginning sound</h4><div class="picgrid">${s.begin.map((x,i)=>`<div class="piccard">${radio(`s${si}_beg${i}`,x[1],x[0]+" "+x[1])}</div>`).join("")}</div>
+ <h4>Middle sound</h4><div class="picgrid">${s.middle.map((x,i)=>`<div class="piccard">${radio(`s${si}_mid${i}`,x[1],x[0]+" "+x[1])}</div>`).join("")}</div>
+ <h4>End sound</h4><div class="picgrid">${s.end.map((x,i)=>`<div class="piccard">${radio(`s${si}_end${i}`,x[1],x[0]+" "+x[1])}</div>`).join("")}</div>
+ <p><button class="small" onclick="speak('cat, dog, pen, sun')">🔊 Hear the sounds/words</button></p>`,12);
+ h+=q(3,"Choose the picture/word from the same word family. [4 M]",
+ s.families.map((a,i)=>`<div style="margin:9px 0">${i+1}. <b>${a[0]}</b> family:
+ ${a.slice(1).map(w=>radio(`s${si}_fam${i}`,w,w+" 🔤")).join("")}</div>`).join(""),4);
+ h+=q(4,"Draw and label things which we get from trees. [6 M]",
+ `<div class="picgrid">${s.trees.map((x,i)=>`<div class="piccard">${radio(`s${si}_tree${i}`,x[1],x[0]+" "+x[1])}</div>`).join("")}</div>
+ <p><b>Practice drawing:</b> 🌳 Draw one thing we get from a tree and write its name: <input type="text" name="s${si}_treeDraw" placeholder="Name"></p>`,6);
+ h+=q(5,"Copy the words. [2 M]",`<div class="wordbank">${s.copy.slice(0,2).join(" &nbsp;&nbsp; ")}</div><input type="text" name="s${si}_copy" style="width:90%" placeholder="Copy the words here">`,2);
+ h+=q(6,"Write the missing letters in the words. [5 M]",s.missing.map((x,i)=>`${i+1}. <b>${x[0]}</b> <input type="text" name="s${si}_miss${i}" maxlength="1" style="width:45px">`).join(" &nbsp; "),5);
+ h+=q(7,"See the letter and draw/select a picture that begins with it. [3 M]",s.letterPics.slice(0,3).map((x,i)=>`<div style="margin:10px 0"><b>${x[0]}</b> ${radio(`s${si}_letter${i}`,x[2],x[1]+" "+x[2])}</div>`).join(""),3);
+ h+=q(8,"Circle the whole words. [4 M]",`<div class="options">${s.copy.slice(0,4).map((w,i)=>radio(`s${si}_whole${i}`,w,w)).join("")}</div>`,4);
+ h+=`</div>`;
+ h+=`<div class="section"><h2>ELGA PART B — Comprehension & Grammar</h2>`;
+ h+=q(1,"Read the story and answer the questions. [10 M]",`<div class="info"><b>Story:</b> ${s.story}</div>`+
+ s.storyQs.map((a,i)=>`<div style="margin:10px 0"><b>${i+1}. ${a[0]}</b><div class="options">${a.slice(1).map(w=>radio(`s${si}_story${i}`,w,w)).join("")}</div></div>`).join(""),10);
+ h+=q(2,"Circle the picture of naming words. [4 M]",s.naming.map((a,i)=>`<div style="margin:10px 0">${i+1}. <div class="options">${a.map(w=>{let word=w.split(" ").pop(); return radio(`s${si}_namePic${i}`,word,w)}).join("")}</div></div>`).join(""),4);
+ h+=q(3,"Circle the correct naming word for the picture. [4 M]",s.match.map((a,i)=>`<div style="margin:9px 0"><span class="pic">${a[1]}</span>${["mother","cake","place","fruits"][i]}:
+ ${radio(`s${si}_matchName${i}`,a[0],a[0])}${radio(`s${si}_matchName${i}`,"wrong","wrong word")}</div>`).join(""),4);
+ h+=q(4,"Write the many form of the given words. [3 M]",s.many.map((a,i)=>`${i+1}. ${a[0]} → <input type="text" name="s${si}_many${i}">`).join(" &nbsp;&nbsp; "),3);
+ h+=q(5,"Sort the words into Proper Nouns and Common Nouns. [4 M]",`<div class="wordbank">${s.sort.join(" • ")}</div>`+s.sort.map((w,i)=>`<div style="margin:7px 0"><b>${w}</b> ${radio(`s${si}_sort${i}`,"proper","Proper Noun")} ${radio(`s${si}_sort${i}`,"common","Common Noun")}</div>`).join(""),4);
+ h+=q(6,"Sort into Letters, Words and Sentences. [5 M]",`
+ <div class="wordbank">A &nbsp; cat &nbsp; I am happy. &nbsp; B &nbsp; school &nbsp; We play.</div>
+ ${["A","cat","I am happy.","B","school","We play."].map((w,i)=>`<div style="margin:7px 0"><b>${w}</b> ${radio(`s${si}_lws${i}`,"letter","Letter")} ${radio(`s${si}_lws${i}`,"word","Word")} ${radio(`s${si}_lws${i}`,"sentence","Sentence")}</div>`).join("")}`,5);
+ h+=q(7,"Match the pictures with the words. [5 M]",`<div class="match">${s.match.map((a,i)=>`<span>${a[1]}</span><span><select name="s${si}_m${i}"><option value="">Choose</option>${s.match.map(x=>`<option>${x[0]}</option>`).join("")}</select></span>`).join("")}</div>`,5);
+ h+=q(8,"Circle the naming words in the sentences. [3 M]",[
+ "Riya goes to Mumbai.","My dog has brown colour.","My uncle lives in London."
+ ].map((sent,i)=>`<p>${sent} <select name="s${si}_sentName${i}"><option value="">Choose</option><option>Riya</option><option>dog</option><option>uncle</option><option>Mumbai</option><option>London</option></select></p>`).join(""),3);
+ h+=q(9,"Underline/select the action words in the sentences. [2 M]",[
+ "I like to jump.","Seema likes to read a storybook.","Mother cooks delicious food.","Rohan writes in a notebook.","Priya sings a beautiful song."
+ ].slice(0,2).map((sent,i)=>`<p>${sent} ${radio(`s${si}_act${i}`,i===0?"jump":"read",i===0?"jump":"read")}${radio(`s${si}_act${i}`,"other","other")}</p>`).join(""),2);
+ h+=`</div>
+ <div class="scorebox">
+ <button class="submit" onclick="checkTest(${si})">Submit Test</button>
+ <button class="reset" onclick="location.reload()">Reset</button>
+ <div id="result${si}" class="result"></div>
+ </div>`;
+ return h;
+}
+
+function speak(text){
+ if('speechSynthesis' in window){speechSynthesis.cancel(); let u=new SpeechSynthesisUtterance(text);u.rate=.75;speechSynthesis.speak(u);}
+ else alert("Speech is not supported in this browser.");
+}
+function checkTest(si){
+ const root=document.getElementById("set"+si);
+ let score=0,total=80;
+ const s=sets[si];
+ const val=(name)=>{let e=root.querySelector(`[name="${name}"]:checked`);return e?e.value:""};
+ const text=(name)=>{let e=root.querySelector(`[name="${name}"]`);return e?e.value.trim().toLowerCase():""};
+ s.spell.forEach((w,i)=>{if(text(`s${si}_spell${i}`)===w)score+=1});
+ // Sound sections: 12 items, expected target words
+ s.begin.forEach((x,i)=>{if(val(`s${si}_beg${i}`)===x[1])score+=1});
+ s.middle.forEach((x,i)=>{if(val(`s${si}_mid${i}`)===x[1])score+=1});
+ s.end.forEach((x,i)=>{if(val(`s${si}_end${i}`)===x[1])score+=1});
+ s.families.forEach((a,i)=>{if(val(`s${si}_fam${i}`)!==a[1] && val(`s${si}_fam${i}`)!==a[2]){}else score+=1}); // either related family word accepted
+ s.trees.forEach((x,i)=>{if(val(`s${si}_tree${i}`)===x[1])score+=1});
+ // Drawing label
+ if(text(`s${si}_treeDraw`))score+=1;
+ if(text(`s${si}_copy`))score+=2;
+ s.missing.forEach((x,i)=>{if(text(`s${si}_miss${i}`)===x[1])score+=1});
+ s.letterPics.slice(0,3).forEach((x,i)=>{if(val(`s${si}_letter${i}`)===x[2])score+=1});
+ s.copy.slice(0,4).forEach((w,i)=>{if(val(`s${si}_whole${i}`)===w)score+=1});
+ s.storyQs.forEach((a,i)=>{if(val(`s${si}_story${i}`)===a[1])score+=1});
+ s.naming.forEach((a,i)=>{let correct=a.find(x=>!["🏃 Run","😴 Sleep","🎵 Sing","✍️ Write","🏃 Jump","💃 Dance","😊 Happy","📖 Read","🎵 Sing","🍴 Eat"].includes(x)); if(val(`s${si}_namePic${i}`)===correct?.split(" ").pop())score+=1});
+ s.match.forEach((a,i)=>{if(val(`s${si}_matchName${i}`)===a[0])score+=1});
+ s.many.forEach((a,i)=>{if(text(`s${si}_many${i}`)===a[1])score+=1});
+ s.sort.forEach((w,i)=>{if(val(`s${si}_sort${i}`)===(s.proper.includes(w)?"proper":"common"))score+=1});
+ const lws=["letter","word","sentence","letter","word","sentence"];
+ lws.forEach((x,i)=>{if(val(`s${si}_lws${i}`)===x)score+=1});
+ s.match.forEach((a,i)=>{let e=root.querySelector(`[name="s${si}_m${i}"]`);if(e&&e.value===a[0])score+=1});
+ const names=["Riya","dog"];names.forEach((x,i)=>{if(val(`s${si}_sentName${i}`)===x)score+=1});
+ const acts=["jump","read"];acts.forEach((x,i)=>{if(val(`s${si}_act${i}`)===x)score+=1});
+ document.getElementById("result"+si).innerHTML=`Your practice score: <b>${score} / ${total}</b><br><small>This online version uses automatic checking for objective answers. Drawing/copying responses are counted when an entry is provided.</small>`;
+}
+</script>
+</body>
+</html>
